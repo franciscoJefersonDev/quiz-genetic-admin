@@ -14,7 +14,7 @@ confirm.addEventListener('click', event => {
   }
   confirm.classList.add('loading')
   confirm.setAttribute('disabled', 'true')
-  axios.post(`${api_connection}/new-question`, {
+  axios.post(`${api_connection}/questions`, {
     question: question.value.trim(),
     a: a.value.trim(),
     b: b.value.trim(),
