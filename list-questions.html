@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QUESTIONS</title>
+</head>
+<body>
+  <div class="container">
+    <ul>
+     
+    </ul>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+    const api_connection = 'https://quiz-generic.herokuapp.com'
+    axios.get(`${api_connection}/questions`)
+      .then((request) => { 
+        request.data.data.forEach((item, index) => {
+          const container = document.querySelector('.container ul')
+          const li = document.createElement('li')
+          const p = document.createElement('li')
+          li.innerHTML = `
+          <p>${index + 1} - ${item.question}</p>
+            <p>A - ${item.a}</p>
+            <p>B - ${item.b}</p>
+            <p>C - ${item.c}</p>
+            <p>D - ${item.d}</p>
+          `
+          container.appendChild(li)
+        })
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  </script>
+</body>
+</html>
